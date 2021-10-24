@@ -1,16 +1,16 @@
 <template>
   <div id="profil">
-    <img :src="profil.avatar_url" alt="profil"/>
+    <img :src="user.avatarUrl" alt="profil"/>
     <div>
-        <p>{{profil.name}}</p>
-        <p>{{profil.company}}</p>
-        <p>Création {{profil.created_at}}</p>
-        <p>MAJ : {{profil.updated_at}}</p>
-        <p>Abonnés : {{profil.followers}}</p>
-        <p>Abonnement : {{profil.following}}</p>
+        <p>{{user.name}}</p>
+        <p>{{user.company}}</p>
+        <p>Création {{user.createdAt}}</p>
+        <p>MAJ : {{user.updatedAt}}</p>
+        <p>Abonnés : {{user.followers.totalCount}}</p>
+        <p>Abonnement : {{user.following.totalCount}}</p>
     </div>
     <div>
-        <!-- {{profilProject?.files?.readme.html_url}} -->
+        {{user.bio}}
     </div>
   </div>
 </template>
@@ -18,27 +18,8 @@
 import * as api from '../api'
 export default {
   name: 'Profil',
-  data () {
-    return {
-      profil: [],
-      profilProject: {}
-    }
-  },
-  created () {
-    this.getProfil()
-    this.getProfilProject()
-  },
-  methods : {
-    getProfil() {
-      api.getProfil().then(response => {
-        this.profil = response.data
-      })
-    },
-    getProfilProject() {
-      api.getProfilProject().then(response => {
-        this.profilProject = response.data
-      })
-    }
+  apollo: {
+    user: api.user,
   }
 }
 </script>
