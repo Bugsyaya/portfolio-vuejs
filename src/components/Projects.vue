@@ -1,6 +1,6 @@
 <template>
   <div id="grid-projects">
-    <div class="project" v-for="project in projects" :key="project.id">
+    <div class="project" v-for="project in repositoryOwner.repositories.nodes" :key="project.id">
       <ProjectCard :project="project"/>
     </div>
   </div>
@@ -11,22 +11,12 @@ import * as api from '../api'
 import ProjectCard from './ProjectCard.vue'
 export default {
   name: 'Projects',
+  apollo: {
+    repositoryOwner: api.allProject,
+  },
   components: {
     ProjectCard
   },
-  data () {
-    return {
-      projects: []
-    }
-  },
-  created () {
-    this.getProjects()
-  },
-  methods : {
-    getProjects() {
-      api.getProjects().then(response => this.projects = response)
-    }
-  }
 }
 </script>
 

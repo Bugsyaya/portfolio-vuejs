@@ -5,6 +5,7 @@ import 'ant-design-vue/dist/antd.css';
 import router from './router'
 import ECharts from 'vue-echarts'
 import { use } from 'echarts/core'
+import VueApollo from 'vue-apollo'
 Vue.config.productionTip = false;
 
 import {
@@ -17,6 +18,11 @@ import {
   GridComponent,
   TooltipComponent
 } from 'echarts/components'
+import { client } from './api';
+
+const apolloProvider = new VueApollo({
+  defaultClient: client,
+})
 
 use([
   CanvasRenderer,
@@ -27,9 +33,10 @@ use([
 
 Vue.component('v-chart', ECharts)
 
-Vue.use(Antd);
+Vue.use(Antd).use(VueApollo);
 
 new Vue({
   router,
+  apolloProvider,
   render: h => h(App)
 }).$mount('#app')

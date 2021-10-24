@@ -10,13 +10,16 @@
   "dependencies": {
     "@vue/composition-api": "^1.2.3",
     "ant-design-vue": "^1.7.8",
+    "apollo-boost": "^0.4.9",
     "axios": "^0.22.0",
     "chart.js": "2",
     "core-js": "^3.6.5",
     "echarts": "^5.2.1",
+    "graphql": "^15.6.1",
     "marked": "^3.0.4",
     "randomcolor": "^0.6.2",
     "vue": "^2.6.11",
+    "vue-apollo": "^3.0.8",
     "vue-chartjs": "^3.4.0",
     "vue-echarts": "^6.0.0",
     "vue-router": "^3.5.2"
