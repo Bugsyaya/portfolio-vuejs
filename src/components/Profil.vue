@@ -1,13 +1,14 @@
 <template>
   <div id="profil">
-    <img :src="profil.avatar_url" alt="profil"/>
+    <p>{{user.id}}</p>
+    <!-- <img :src="profil.avatar_url" alt="profil"/> -->
     <div>
-        <p>{{profil.name}}</p>
+        <!-- <p>{{profil.name}}</p>
         <p>{{profil.company}}</p>
         <p>Création {{profil.created_at}}</p>
         <p>MAJ : {{profil.updated_at}}</p>
         <p>Abonnés : {{profil.followers}}</p>
-        <p>Abonnement : {{profil.following}}</p>
+        <p>Abonnement : {{profil.following}}</p> -->
     </div>
     <div>
         <!-- {{profilProject?.files?.readme.html_url}} -->
@@ -18,6 +19,9 @@
 import * as api from '../api'
 export default {
   name: 'Profil',
+  apollo: {
+    user: api.playlistByUser,
+  },
   data () {
     return {
       profil: [],

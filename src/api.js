@@ -1,13 +1,31 @@
 import ApolloClient, { gql } from 'apollo-boost'
 
-import SECRET from './.secret.json'
+// import SECRET from './.secret.json'
   
-const ENDPOINT_URL = 'https://api.github.com/graphql'
+// const ENDPOINT_URL = 'https://api.github.com/graphql'
+let SPOTIFY_URL = 'http://localhost:8081/graphql'
+
+// export const client = new ApolloClient({
+//   uri: ENDPOINT_URL,
+//   headers: { Authorization: 'Bearer ' + SECRET.TOKEN }
+// });
 
 export const client = new ApolloClient({
-  uri: ENDPOINT_URL,
-  headers: { Authorization: 'Bearer ' + SECRET.TOKEN }
+  uri: SPOTIFY_URL,
 });
+
+export const playlistByUser = 
+  gql`
+  {
+    user(id:"bugsyaya") {
+      id
+      playlists {
+        id
+        name
+      }
+    }
+  }
+  `
 
 export const allProject =
     gql`
